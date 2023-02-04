@@ -8,16 +8,18 @@ const movieDB = {
   ],
 };
 
-const blockAdvertisement = document.querySelector('.promo__advertisement');
-const promoTitle = document.querySelector('.promo__genre');
-const promoBg = document.querySelector('.promo__bg');
+const adv = document.querySelectorAll('.promo__adv img');
+const poster = document.querySelector('.promo__bg');
+const genre = poster.querySelector('.promo__genre');
 const movieList = document.querySelector('.promo__interactive-list');
 
-blockAdvertisement.remove();
+adv.forEach((item) => {
+  item.remove();
+});
 
-promoTitle.textContent = 'ДРАМА';
+genre.textContent = 'драмма';
 
-promoBg.style.backgroundImage = 'url("img/bg.jpg")';
+poster.style.backgroundImage = 'url("img/bg.jpg")';
 
 movieList.innerHTML = '';
 
@@ -26,6 +28,7 @@ movieDB.movies.sort();
 movieDB.movies.forEach((film, i) => {
   movieList.innerHTML += `
     <li class="promo__interactive-item">${i + 1} ${film}
-        <div class="delete"></div>
-    </li>`;
+      <div class="delete"></div>
+    </li>
+  `;
 });
