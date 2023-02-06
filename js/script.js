@@ -1,34 +1,36 @@
-const movieDB = {
-  movies: [
-    'Логан',
-    'Лига справедливости',
-    'Ла-ла лэнд',
-    'Одержимость',
-    'Скотт Пилигрим против...',
-  ],
-};
+document.addEventListener('DOMContentLoaded', () => {
+  const movieDB = {
+    movies: [
+      'Логан',
+      'Лига справедливости',
+      'Ла-ла лэнд',
+      'Одержимость',
+      'Скотт Пилигрим против...',
+    ],
+  };
 
-const adv = document.querySelectorAll('.promo__adv img');
-const poster = document.querySelector('.promo__bg');
-const genre = poster.querySelector('.promo__genre');
-const movieList = document.querySelector('.promo__interactive-list');
+  const adv = document.querySelectorAll('.promo__adv img');
+  const poster = document.querySelector('.promo__bg');
+  const genre = poster.querySelector('.promo__genre');
+  const movieList = document.querySelector('.promo__interactive-list');
 
-adv.forEach((item) => {
-  item.remove();
-});
+  adv.forEach((item) => {
+    item.remove();
+  });
 
-genre.textContent = 'драмма';
+  genre.textContent = 'драмма';
 
-poster.style.backgroundImage = 'url("img/bg.jpg")';
+  poster.style.backgroundImage = 'url("img/bg.jpg")';
 
-movieList.innerHTML = '';
+  movieList.innerHTML = '';
 
-movieDB.movies.sort();
+  movieDB.movies.sort();
 
-movieDB.movies.forEach((film, i) => {
-  movieList.innerHTML += `
-    <li class="promo__interactive-item">${i + 1} ${film}
-      <div class="delete"></div>
-    </li>
-  `;
+  movieDB.movies.forEach((film, i) => {
+    movieList.innerHTML += `
+      <li class="promo__interactive-item">${i + 1} ${film}
+        <div class="delete"></div>
+      </li>
+    `;
+  });
 });
