@@ -17,13 +17,9 @@ document.addEventListener('DOMContentLoaded', () => {
   adv.forEach((item) => {
     item.remove();
   });
-
   genre.textContent = 'драмма';
-
   poster.style.backgroundImage = 'url("img/bg.jpg")';
-
   movieList.innerHTML = '';
-
   movieDB.movies.sort();
 
   movieDB.movies.forEach((film, i) => {
