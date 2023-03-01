@@ -21,15 +21,16 @@ document.addEventListener('DOMContentLoaded', () => {
     event.preventDefault();
 
     const newFilm = addInput.value;
-
     // eslint-disable-next-line no-unused-vars
     const favorite = checkbox.checked;
-    movieDB.movies.push(newFilm);
-    // eslint-disable-next-line no-use-before-define
-    sortArr(movieDB.movies);
 
-    // eslint-disable-next-line no-use-before-define
-    createMovieList(movieDB.movies, movieList);
+    if (newFilm) {
+      movieDB.movies.push(newFilm);
+      // eslint-disable-next-line no-use-before-define
+      sortArr(movieDB.movies);
+      // eslint-disable-next-line no-use-before-define
+      createMovieList(movieDB.movies, movieList);
+    }
 
     event.target.reset();
   });
