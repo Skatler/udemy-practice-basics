@@ -25,17 +25,30 @@ document.addEventListener('DOMContentLoaded', () => {
     // eslint-disable-next-line no-unused-vars
     const favorite = checkbox.checked;
     movieDB.movies.push(newFilm);
-    movieDB.movies.sort();
+    // eslint-disable-next-line no-use-before-define
+    sortArr(movieDB.movies);
+
+    // eslint-disable-next-line no-use-before-define
+    createMovieList(movieDB.movies, movieList);
+
+    event.target.reset();
   });
-  adv.forEach((item) => {
-    item.remove();
-  });
 
-  genre.textContent = 'драмма';
+  const deleteAdv = (arr) => {
+    arr.forEach((item) => {
+      item.remove();
+    });
+  };
 
-  poster.style.backgroundImage = 'url("img/bg.jpg")';
+  const makeChanges = () => {
+    genre.textContent = 'драмма';
 
-  movieDB.movies.sort();
+    poster.style.backgroundImage = 'url("img/bg.jpg")';
+  };
+
+  function sortArr(arr) {
+    arr.sort();
+  }
 
   function createMovieList(films, parent) {
     parent.innerHTML = '';
@@ -48,5 +61,8 @@ document.addEventListener('DOMContentLoaded', () => {
       `;
     });
   }
+  deleteAdv(adv);
+  makeChanges();
+  sortArr(movieDB.movies);
   createMovieList(movieDB.movies, movieList);
 });
