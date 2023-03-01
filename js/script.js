@@ -20,11 +20,14 @@ document.addEventListener('DOMContentLoaded', () => {
   addForm.addEventListener('submit', (event) => {
     event.preventDefault();
 
-    const newFilm = addInput.value;
+    let newFilm = addInput.value;
     // eslint-disable-next-line no-unused-vars
     const favorite = checkbox.checked;
 
     if (newFilm) {
+      if (newFilm.length > 21) {
+        newFilm = `${newFilm.substring(0, 22)}...`;
+      }
       movieDB.movies.push(newFilm);
       // eslint-disable-next-line no-use-before-define
       sortArr(movieDB.movies);
@@ -60,6 +63,12 @@ document.addEventListener('DOMContentLoaded', () => {
           <div class="delete"></div>
         </li>
       `;
+    });
+    document.querySelectorAll('.delete').forEach((btn, i) => {
+      btn.addEventListener('click', () => {
+        btn.parentElement.remove();
+        movieDB.movies.splice(i, 1);
+      });
     });
   }
   deleteAdv(adv);
