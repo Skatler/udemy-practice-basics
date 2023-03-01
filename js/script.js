@@ -13,20 +13,40 @@ document.addEventListener('DOMContentLoaded', () => {
   const poster = document.querySelector('.promo__bg');
   const genre = poster.querySelector('.promo__genre');
   const movieList = document.querySelector('.promo__interactive-list');
+  const addForm = document.querySelector('form.add');
+  const addInput = addForm.querySelector('.adding__input');
+  const checkbox = addForm.querySelector('[type="checkbox"]');
 
+  addForm.addEventListener('submit', (event) => {
+    event.preventDefault();
+
+    const newFilm = addInput.value;
+
+    // eslint-disable-next-line no-unused-vars
+    const favorite = checkbox.checked;
+    movieDB.movies.push(newFilm);
+    movieDB.movies.sort();
+  });
   adv.forEach((item) => {
     item.remove();
   });
+
   genre.textContent = 'драмма';
+
   poster.style.backgroundImage = 'url("img/bg.jpg")';
-  movieList.innerHTML = '';
+
   movieDB.movies.sort();
 
-  movieDB.movies.forEach((film, i) => {
-    movieList.innerHTML += `
-      <li class="promo__interactive-item">${i + 1} ${film}
-        <div class="delete"></div>
-      </li>
-    `;
-  });
+  function createMovieList(films, parent) {
+    parent.innerHTML = '';
+
+    films.forEach((film, i) => {
+      parent.innerHTML += `
+        <li class="promo__interactive-item">${i + 1} ${film}
+          <div class="delete"></div>
+        </li>
+      `;
+    });
+  }
+  createMovieList(movieDB.movies, movieList);
 });
