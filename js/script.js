@@ -21,12 +21,14 @@ document.addEventListener('DOMContentLoaded', () => {
     event.preventDefault();
 
     let newFilm = addInput.value;
-    // eslint-disable-next-line no-unused-vars
     const favorite = checkbox.checked;
 
     if (newFilm) {
       if (newFilm.length > 21) {
         newFilm = `${newFilm.substring(0, 22)}...`;
+      }
+      if (favorite) {
+        console.log('Добавляем любимый фильм');
       }
       movieDB.movies.push(newFilm);
       // eslint-disable-next-line no-use-before-define
